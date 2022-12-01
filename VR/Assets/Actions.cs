@@ -11,7 +11,13 @@ public class Actions : MonoBehaviour
 	public GameObject uncutTree;
 	public GameObject cutTree;
 	public GameObject plank;
-	public GameObject fireStone;
+	public GameObject boilerFireEffects;
+	public GameObject shroom1;
+	public GameObject shroom2;
+	public GameObject shroom3;
+	public GameObject newGrass;
+	public GameObject BladeWithPlant;
+	public GameObject newBoiler;
 	//private GameObject originalGameObject;// = GameObject.Find("Camera");
 	private GameObject holdPositionObject;// = originalGameObject.transform.GetChild(0).gameObject;
     // Start is called before the first frame update
@@ -29,6 +35,11 @@ public class Actions : MonoBehaviour
 	private bool boilerHasLog = false;
 	private bool collidedWithBoiler = false;
 	private bool boilerIsBurning = false;
+	private bool boilerHasShroom1 = false;
+	private bool boilerHasShroom2 = false;
+	private bool boilerHasShroom3 = false;
+	private bool boilerHasPlant = false;
+	private bool sickledWheat = false;
 	
     void Start()
     {
@@ -107,6 +118,7 @@ public class Actions : MonoBehaviour
 			if (badGrass.transform.position.y <= -1.5) {
 				badGrassRemoved = true;
 				GameObject.Destroy(badGrass);
+				//boilerFireEffects.transform.position += new Vector3(0f, 2f, 0f);
 			}
 		}
 		
@@ -169,8 +181,70 @@ public class Actions : MonoBehaviour
 			{
 				boilerIsBurning = true;
 				Debug.Log("Boiler is burning");
+				GameObject.Destroy(child);
+				boilerFireEffects.transform.position = new Vector3(0.15f, -0.3f, 0f);
 				
 			}
+		}
+		
+		// shroom1 
+		if (collidedWithBoiler && child != null && child.name == "Mushroom1" && boilerIsBurning && !boilerHasShroom1)
+		{
+			if (Input.GetKeyDown(KeyCode.G))
+			{
+				GameObject.Destroy(child);
+				boilerHasShroom1 = true;
+			}
+		}
+		
+		// shroom2
+		if (collidedWithBoiler && child != null && child.name == "Mushroom2" && boilerIsBurning && !boilerHasShroom2)
+		{
+			if (Input.GetKeyDown(KeyCode.G))
+			{
+				GameObject.Destroy(child);
+				boilerHasShroom2 = true;
+			}
+		}
+		
+		// shroom3 
+		if (collidedWithBoiler && child != null && child.name == "Mushroom3" && boilerIsBurning && !boilerHasShroom3)
+		{
+			if (Input.GetKeyDown(KeyCode.G))
+			{
+				GameObject.Destroy(child);
+				boilerHasShroom3 = true;
+			}
+		}
+		// sickling wheat
+		if (collidedWithMud && child != null && child.name == "Sickle1" && thirdGrowthCompleted && !sickledWheat)
+		{
+			if (Input.GetKeyDown(KeyCode.G)) {
+				//grass_obj_growed.transform.position -= new Vector3(0f, -2f, 0f);
+				//GameObject.Destroy(grass_obj_growed);
+				var temp = GameObject.Find("PlantGrowth1");
+				GameObject.Destroy(temp);
+				newGrass.transform.position += new Vector3(0f, 2f, 0f);
+				BladeWithPlant.transform.position = new Vector3(6f, 4.3f, -12f);
+				sickledWheat = true;
+		}
+		}
+		
+		// adding blade with plant to pot
+		if (collidedWithBoiler && child != null && child.name == "Blade" && boilerIsBurning && sickledWheat)
+		{
+			if (Input.GetKeyDown(KeyCode.G))
+			{
+				GameObject.Destroy(child);
+				boilerHasPlant = true;
+			}
+		}
+		
+		if (boilerHasShroom1 && boilerHasShroom2 && boilerHasShroom3 && boilerHasPlant)
+		{
+			newBoiler.transform.position = new Vector3(0.7f, 4.3f, -7.55f);
+			var temp = GameObject.Find("Boiler1");
+			GameObject.Destroy(temp);
 		}
     }
 	
