@@ -1,0 +1,11 @@
+Used objects:
+- https://assetstore.unity.com/packages/3d/environments/low-poly-park-154815
+- https://assetstore.unity.com/packages/3d/action-rpg-melee-axe-38213
+- https://assetstore.unity.com/packages/3d/environments/fantasy/baker-s-house-26443
+- https://assetstore.unity.com/packages/3d/environments/3d-low-poly-village-164241
+- https://assetstore.unity.com/packages/3d/environments/medieval-models-pack-218163
+- https://assetstore.unity.com/packages/3d/environments/dungeons/low-poly-dungeons-lite-177937
+- https://assetstore.unity.com/packages/3d/environments/industrial/low-poly-farm-pack-lite-188100
+- https://assetstore.unity.com/packages/3d/environments/simplistic-low-poly-nature-93894
+- https://assetstore.unity.com/packages/3d/environments/low-poly-park-154815
+- https://assetstore.unity.com/packages/3d/environments/simple-forest-pack-209273
